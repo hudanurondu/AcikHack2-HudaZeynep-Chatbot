@@ -22,8 +22,62 @@ Yapay zeka ile kodlamış olduğumuz chatbotumuz covid-19 ile alakalı soruları
 
 ## Tasarım Aşaması
 
+*Tasarımın farklı platformlara uyum sağlayabilmesi için SASS kullandık. <br/>
+SABİM web tasarım standartlarına bağlı kaldık. <br/>
+Tasarımda köşeli ve sert ifadelerden kaçındık. Daha çok kullanıcı dostu ve göze hitap eden yaklaşım benimsendi.*
 
 
+
+## Sağlık asistan kodlama aşaması
+
+
+var you = "Siz";
+botSays("\nSİZE NASIL YARDIMCI OLABİLİRİM? \n\n\n");
+
+*Mobil sağlık asistanın karşılama cümlesi, verilecek cevaplar doğrultusunda chatbot aktif olacaktır.* <br/>
+
+
+`var Goodbye = [
+  "GÖRÜŞÜRÜZ",
+  "TEŞEKKÜRLER",
+  "TEŞEKKÜR EDERİM",
+  "ÇOK TEŞEKKÜRLER",
+  "TAMAMDIR",
+];
+
+var soru = [
+  "KORONAVİRÜS NEDİR",
+  "COVİD-19 NEDİR",
+  "CORONA",
+  "KORONA NEDİR",
+  "COVİD NEDİR",
+  "CORONAVİRUS NEDİR",
+  "WHAT İS CORONAVİRUS",
+  "KORONA VİRÜS NEDİR",
+  "KORONA VİRÜS NEDİR?",
+  "KORONAVİRÜS NEDİR ?",];
+
+
+ 
+ if (question.includes(Goodbye[i])) {
+      Else = false;
+      setTimeout(
+        botSays,
+        600,
+        "\nAsistan : Bizi tercih ettiğiniz için teşekkür ederiz ve aklınıza takılan soru olursa tekrar bekleriz.Sağlıklı günler dileriz."
+      );
+    }else if (question.includes(soru[i])) {
+      Else = false;
+      setTimeout(
+        botSays,
+        600,
+        "\nAsistan : İlk olarak Çin’in Wuhan bölgesinde, 2019 yılı Aralık ayının başında görülüp, bu bölgedeki yetkililer tarafından tanımlandığı için gayri resmi Wuhan koronavirüsü adıyla da bilinen yeni koronavirüs solunum yolu enfeksiyonuna neden olan ve insandan insana geçebilen bulaşıcı bir virüstür." `
+ 
+ 
+ 
+ *Chatbot'a eklediğimiz soru-cevap skalası ile yapay zeka alt tabanı sağlandı.*
+ 
+ 
  
 
 
@@ -176,3 +230,51 @@ training = numpy.array(training)
 output = numpy.array(output)
 
 *Şimdi eğittiğimiz kodları çıktıya dönüştürelim.*
+
+[00:53] Zeynep Sude Kankur
+    net = tflearn.input_data(shape=[None, len(training[0])])
+net = tflearn.fully_connected(net, 8)
+net = tflearn.fully_connected(net, 8)
+net = tflearn.fully_connected(net, len(output[0]), activation="softmax")
+net = tflearn.regression(net)
+
+
+model = tflearn.DNN(net)
+ 
+Bu kodumuz ile berber artık chatbota pratik yaptırarak eğitmeye başlıyoruz.
+
+​[00:56] Zeynep Sude Kankur
+    
+
+model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
+model.save("model.tflearn")
+
+Bu kodumuz ise chatbot'un öğrendiğini unutmamasını sağlıyor.
+
+def bag_of_words(s, words):
+    bag = [0 for _ in range(len(words))]
+    s_words = nltk.word_tokenize(s)
+    s_words = [stemmer.stem(word.lower()) for word in s_words]
+    for se in s_words:
+        for i, w in enumerate(words):
+            if w == se:
+                bag[i] = 1
+            
+    return numpy.array(bag)
+
+def chat():
+    print("Start talking with the bot (type quit to stop)!")
+    while True:
+        inp = input("You: ")
+        if inp.lower() == "quit":
+            break
+        results = model.predict([bag_of_words(inp, words)])
+        results_index = numpy.argmax(results)
+        tag = labels[results_index]
+        for tg in data["intents"]:
+            if tg['tag'] == tag:
+                responses = tg['responses']
+        print(random.choice(responses))
+chat()
+
+Bu son kodumuz ile beraber Sağlık Asistanımız içine attığımız sınıflar içinden tahminler yapabilecek hale geliyor ve artık hazır!
