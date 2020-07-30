@@ -2,7 +2,6 @@
 Türkçe doğal dil işleme yarışması
 
 
-
 ## Projenin Amacı
 *Sağlık Asistanı bizim içinde yaşadığımız durumdan esinlenerek oluşturduğumuz bir proje. Evlerimizden çıkmadan yani risk altına girmeyerek ya da hastalıktan şüpheleniyorsak başkasını da riske atmadan korona hakkında bilgi alabileceğimiz, bunun yanı sıra başka hastalıklar ve sağlıklı yaşam gibi konular hakkında da insanlara evden sağlık hizmeti verecek, insanları yönlendirecek bir uygulama yapmayı amaçladık. Özellikle sağlık alanında bu yardımın gelecek için çok kritik olacağını içinde bulunduğumuz dönem de destekliyor.*
 
@@ -31,19 +30,21 @@ Tasarımda köşeli ve sert ifadelerden kaçındık. Daha çok kullanıcı dostu
 ## Sağlık asistan kodlama aşaması
 
 
-var you = "Siz";
+
+var you = "Siz"; <br/>
 botSays("\nSİZE NASIL YARDIMCI OLABİLİRİM? \n\n\n");
 
 *Mobil sağlık asistanın karşılama cümlesi, verilecek cevaplar doğrultusunda chatbot aktif olacaktır.* <br/>
 
 
-`var Goodbye = [
+var Goodbye = [
   "GÖRÜŞÜRÜZ",
   "TEŞEKKÜRLER",
   "TEŞEKKÜR EDERİM",
   "ÇOK TEŞEKKÜRLER",
   "TAMAMDIR",
 ];
+<br/>
 
 var soru = [
   "KORONAVİRÜS NEDİR",
@@ -57,7 +58,7 @@ var soru = [
   "KORONA VİRÜS NEDİR?",
   "KORONAVİRÜS NEDİR ?",];
 
-
+<br/>
  
  if (question.includes(Goodbye[i])) {
       Else = false;
@@ -71,17 +72,16 @@ var soru = [
       setTimeout(
         botSays,
         600,
-        "\nAsistan : İlk olarak Çin’in Wuhan bölgesinde, 2019 yılı Aralık ayının başında görülüp, bu bölgedeki yetkililer tarafından tanımlandığı için gayri resmi Wuhan koronavirüsü adıyla da bilinen yeni koronavirüs solunum yolu enfeksiyonuna neden olan ve insandan insana geçebilen bulaşıcı bir virüstür." `
+        "\nAsistan : İlk olarak Çin’in Wuhan bölgesinde, 2019 yılı Aralık ayının başında görülüp, bu bölgedeki yetkililer tarafından tanımlandığı için gayri resmi Wuhan koronavirüsü adıyla da bilinen yeni koronavirüs solunum yolu enfeksiyonuna neden olan ve insandan insana geçebilen bulaşıcı bir virüstür." 
  
- 
- 
+ <br/>
  *Chatbot'a eklediğimiz soru-cevap skalası ile yapay zeka alt tabanı sağlandı.*
  
  
  
+<br/>
 
-
-{"intents": [
+` {"intents": [
        
     {"tag": "yardım isteme",
          "patterns": ["korona mıyım?"," merhaba koronadan şüpheleniyorum", "yardım eder misiniz", "kendimi iyi hissetmiyorum", "yardıma ihtiyacım var", "ateşim var", "yurt dışından geldim kendimi iyi hissetmiyorum", "kusuyorum", "başım çok ağrıyor", "acelem var bana yardımcı olun", "babam/annem/kardeşim çok hasta, ne yapmalıyız", "evde hasta var grip mi korona mı çözemedik", "hastaneye gitmek doğru mu?", "arkadaşımı iki gün önce korona pozitif olarak hastaneye almışlar ben de kapmış olabilir miyim?"],
@@ -161,10 +161,11 @@ var soru = [
         }
     
    ]
-}
+} `
  
+ <br/>
 *Chatbot'a öncelikle kullanacağı bir data vermemiz gerekiyordu. Biz kendisine gelen metinleri tanıyabilmesi için yukarıdaki JSON dosyasını hazırladık. Yukarıda "tag" ile belirttiğimiz temalara göre kullanıcıdan "pattern" alıp bunlara "responses" yani cevaplar üretmesini sağlayacak cümle örneklerini sıraladık.*
-
+<br/>
 import nltk
 from nltk.stem.lancaster import LancasterStemmer
 stemmer = LancasterStemmer()
@@ -176,9 +177,9 @@ import json
 import pickle
 with open("untitled1new.json") as file:
     data = json.load(file)
-    
+    <br/>
 *Ürettiğimiz JSON verisini bu kodla beraber yükleyerek "Sağlık Asistanını" tasarlamaya başladık.*
-    
+    <br/>
     words = []
 labels = []
 docs_x = []
@@ -194,19 +195,19 @@ for intent in data['intents']:
         
     if intent['tag'] not in labels:
         labels.append(intent['tag'])
-
+<br/>
 
  *Yukarıdaki bu kodlarla ise Chatbot'a yönlendirilen soruların( yani girilen verilerin) çıktısını aldık.*
-    
+    <br/>
  words = [stemmer.stem(w.lower()) for w in words if w != "?"]
     words = sorted(list(set(words)))
 
 
     labels = sorted(labels)
- 
+ <br/>
    * Bu yukarıdaki kod ile Chatbot'un kelimelerin kökünü bulmasını sağladık.Böylece Chatbot'umuzun kelime köklerini kavrayarak kendine bir vocabulary sözlüğü oluşturmasını sağladık.*
 
-
+<br/>
  training = []
 output = []
 out_empty = [0 for _ in range(len(labels))]
@@ -223,15 +224,14 @@ for x, doc in enumerate(docs_x):
     training.append(bag)
     output.append(output_row)
     
-    
+    <br/>
   * Yukarıdaki JSON dosyası ile Chatbot'a bir kelime grubu vermiştik. Sonra da kelime köklerini tanımasını sağlamıştık. Şimdi bizim ona verdiğimiz ihtimalleri ve yazılanları karşılaştırarak bir cevap üretmesini ağlamamız gerekiyor. Onu da bu kod ile gerçekleştirdik.*
-  
+  <br/>
 training = numpy.array(training)
 output = numpy.array(output)
-
+<br/>
 *Şimdi eğittiğimiz kodları çıktıya dönüştürelim.*
-
-[00:53] Zeynep Sude Kankur
+<br/>
     net = tflearn.input_data(shape=[None, len(training[0])])
 net = tflearn.fully_connected(net, 8)
 net = tflearn.fully_connected(net, 8)
@@ -240,17 +240,15 @@ net = tflearn.regression(net)
 
 
 model = tflearn.DNN(net)
- 
-Bu kodumuz ile berber artık chatbota pratik yaptırarak eğitmeye başlıyoruz.
-
-​[00:56] Zeynep Sude Kankur
-    
+ <br/>
+*Bu kodumuz ile berber artık chatbota pratik yaptırarak eğitmeye başlıyoruz.*
+    <br/>
 
 model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
 model.save("model.tflearn")
-
-Bu kodumuz ise chatbot'un öğrendiğini unutmamasını sağlıyor.
-
+<br/>
+*Bu kodumuz ise chatbot'un öğrendiğini unutmamasını sağlıyor.*
+<br/>
 def bag_of_words(s, words):
     bag = [0 for _ in range(len(words))]
     s_words = nltk.word_tokenize(s)
@@ -261,6 +259,8 @@ def bag_of_words(s, words):
                 bag[i] = 1
             
     return numpy.array(bag)
+    
+    <br/>
 
 def chat():
     print("Start talking with the bot (type quit to stop)!")
@@ -276,5 +276,6 @@ def chat():
                 responses = tg['responses']
         print(random.choice(responses))
 chat()
-
-Bu son kodumuz ile beraber Sağlık Asistanımız içine attığımız sınıflar içinden tahminler yapabilecek hale geliyor ve artık hazır!
+<br/>
+*Bu son kodumuz ile beraber Sağlık Asistanımız içine attığımız sınıflar içinden tahminler yapabilecek hale geliyor ve artık hazır!*
+<br/>
