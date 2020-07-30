@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>Sağlık Asistanı</title>
+    <link rel="stylesheet" href="./CSS/style.css" />
+</head>
+
+<div class="main">
+
+    <img src="https://www.saglik.gov.tr/images/saglik-bakanligi-logo.png" alt="Sağlık Bakanlığı Logosu">
+
+    <textarea readonly="true" id="botChat">
+
+    </textarea>
+
+    <br>
+
+    <input type="text" placeholder="Mesajınızı buraya yazınız!" onKeypress="enterButton(event, document.getElementsByTagName('input')[0].value);">
+    
+    <button onClick="answer(document.getElementsByTagName('input')[0].value)">GÖNDER</button></p>
+
+</div>
+
+
+<script src="script.js"></script>
+</body>
+
+</html>
