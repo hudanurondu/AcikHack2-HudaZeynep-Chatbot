@@ -10,8 +10,7 @@ Türkçe doğal dil işleme yarışması
 
 *Chatbot dosyasını açtığınızda karşınıza ilk aşağıda görmüş olduğunuz chatbot sayfası açılacak. Bu sayfa üzerinde butonlar ile seçimler yapabileceksiniz. Yaptığınız seçimler sizi yönlerdirmek üzere farklı URL'e gidecek.*
 
-![Ekran Görüntüsü (188)](https://user-images.githubusercontent.com/67288170/88975786-816bc200-d2c3-11ea-825f-fda4cf94ca56.png)
-
+![Ekran Görüntüsü (191)](https://user-images.githubusercontent.com/67288170/88976455-bb899380-d2c4-11ea-9e75-4fe1d65ec73b.png)
 
 
 
