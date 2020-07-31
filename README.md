@@ -34,7 +34,7 @@ Tasarımda köşeli ve sert ifadelerden kaçındık. Daha çok kullanıcı dostu
 var you = "Siz"; <br/>
 botSays("\nSİZE NASIL YARDIMCI OLABİLİRİM? \n\n\n");
 
-*Mobil sağlık asistanın karşılama cümlesi, verilecek cevaplar doğrultusunda chatbot aktif olacaktır.* <br/>
+* Mobil sağlık asistanın karşılama cümlesi, verilecek cevaplar doğrultusunda chatbot aktif olacaktır. * <br/>
 
 
 var Goodbye = [
@@ -75,7 +75,7 @@ var soru = [
         "\nAsistan : İlk olarak Çin’in Wuhan bölgesinde, 2019 yılı Aralık ayının başında görülüp, bu bölgedeki yetkililer tarafından tanımlandığı için gayri resmi Wuhan koronavirüsü adıyla da bilinen yeni koronavirüs solunum yolu enfeksiyonuna neden olan ve insandan insana geçebilen bulaşıcı bir virüstür." 
  
  <br/>
- *Chatbot'a eklediğimiz soru-cevap skalası ile yapay zeka alt tabanı sağlandı.*
+ * Chatbot'a eklediğimiz soru-cevap skalası ile yapay zeka alt tabanı sağlandı. *
  
  
  
@@ -279,3 +279,9 @@ chat()
 <br/>
 *Bu son kodumuz ile beraber Sağlık Asistanımız içine attığımız sınıflar içinden tahminler yapabilecek hale geliyor ve artık hazır!*
 <br/>
+
+
+## Proje Ekibi
+
+*HÜDANUR ÖNDÜ hudanurondu@gmail.com* <br/>
+*ZEYNEP SUDE KANKUR sude.kankur@gmail.com*
