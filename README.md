@@ -7,7 +7,7 @@ Türkçe doğal dil işleme yarışması
 
 
 
-*Chatbot dosyasını açtığınızda karşınıza ilk aşağıda görmüş olduğunuz chatbot sayfası açılacak. Bu sayfa üzerinde butonlar ile seçimler yapabileceksiniz. Yaptığınız seçimler sizi yönlerdirmek üzere farklı URL'e gidecek.*
+*Chatbot dosyasını açtığınızda karşınıza ilk aşağıda görmüş olduğunuz chatbot sayfası açılacak. Bu sayfa üzerinde butonlar ile seçimler yapabileceksiniz. Yaptığınız seçimler sizi aradığınız soruların cevaplarını bulabileceğiniz sayfalara yönlendirecektir.*
 
 ![Ekran Görüntüsü (191)](https://user-images.githubusercontent.com/67288170/88976455-bb899380-d2c4-11ea-9e75-4fe1d65ec73b.png)
 
@@ -23,7 +23,7 @@ Yapay zeka ile kodlamış olduğumuz chatbotumuz covid-19 ile alakalı soruları
 
 *Tasarımın farklı platformlara uyum sağlayabilmesi için SASS kullandık. <br/>
 SABİM web tasarım standartlarına bağlı kaldık. <br/>
-Tasarımda köşeli ve sert ifadelerden kaçındık. Daha çok kullanıcı dostu ve göze hitap eden yaklaşım benimsendi.*
+Tasarımda köşeli ve sert ifadelerden kaçındık. Daha çok kullanıcı dostu ve göze hitap eden yaklaşım benimsedik.*
 
 
 
