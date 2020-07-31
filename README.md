@@ -75,13 +75,13 @@ var soru = [
         "\nAsistan : İlk olarak Çin’in Wuhan bölgesinde, 2019 yılı Aralık ayının başında görülüp, bu bölgedeki yetkililer tarafından tanımlandığı için gayri resmi Wuhan koronavirüsü adıyla da bilinen yeni koronavirüs solunum yolu enfeksiyonuna neden olan ve insandan insana geçebilen bulaşıcı bir virüstür." 
  
  <br/>
- * Chatbot'a eklediğimiz soru-cevap skalası ile yapay zeka alt tabanı sağlandı. *
+ Chatbot'a eklediğimiz soru-cevap skalası ile yapay zeka alt tabanı sağlandı. 
  
  
  
 <br/>
 
-` {"intents": [
+{"intents": [
        
     {"tag": "yardım isteme",
          "patterns": ["korona mıyım?"," merhaba koronadan şüpheleniyorum", "yardım eder misiniz", "kendimi iyi hissetmiyorum", "yardıma ihtiyacım var", "ateşim var", "yurt dışından geldim kendimi iyi hissetmiyorum", "kusuyorum", "başım çok ağrıyor", "acelem var bana yardımcı olun", "babam/annem/kardeşim çok hasta, ne yapmalıyız", "evde hasta var grip mi korona mı çözemedik", "hastaneye gitmek doğru mu?", "arkadaşımı iki gün önce korona pozitif olarak hastaneye almışlar ben de kapmış olabilir miyim?"],
@@ -161,7 +161,7 @@ var soru = [
         }
     
    ]
-} `
+} 
  
  <br/>
 *Chatbot'a öncelikle kullanacağı bir data vermemiz gerekiyordu. Biz kendisine gelen metinleri tanıyabilmesi için yukarıdaki JSON dosyasını hazırladık. Yukarıda "tag" ile belirttiğimiz temalara göre kullanıcıdan "pattern" alıp bunlara "responses" yani cevaplar üretmesini sağlayacak cümle örneklerini sıraladık.*
