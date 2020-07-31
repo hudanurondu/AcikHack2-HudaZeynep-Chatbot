@@ -34,7 +34,7 @@ Tasarımda köşeli ve sert ifadelerden kaçındık. Daha çok kullanıcı dostu
 var you = "Siz"; <br/>
 botSays("\nSİZE NASIL YARDIMCI OLABİLİRİM? \n\n\n");
 
-* Mobil sağlık asistanın karşılama cümlesi, verilecek cevaplar doğrultusunda chatbot aktif olacaktır. * <br/>
+ Mobil sağlık asistanın karşılama cümlesi, verilecek cevaplar doğrultusunda chatbot aktif olacaktır.  <br/>
 
 
 var Goodbye = [
@@ -164,7 +164,7 @@ var soru = [
 } 
  
  <br/>
-*Chatbot'a öncelikle kullanacağı bir data vermemiz gerekiyordu. Biz kendisine gelen metinleri tanıyabilmesi için yukarıdaki JSON dosyasını hazırladık. Yukarıda "tag" ile belirttiğimiz temalara göre kullanıcıdan "pattern" alıp bunlara "responses" yani cevaplar üretmesini sağlayacak cümle örneklerini sıraladık.*
+Chatbot'a öncelikle kullanacağı bir data vermemiz gerekiyordu. Biz kendisine gelen metinleri tanıyabilmesi için yukarıdaki JSON dosyasını hazırladık. Yukarıda "tag" ile belirttiğimiz temalara göre kullanıcıdan "pattern" alıp bunlara "responses" yani cevaplar üretmesini sağlayacak cümle örneklerini sıraladık.
 <br/>
 import nltk
 from nltk.stem.lancaster import LancasterStemmer
@@ -178,7 +178,7 @@ import pickle
 with open("untitled1new.json") as file:
     data = json.load(file)
     <br/>
-*Ürettiğimiz JSON verisini bu kodla beraber yükleyerek "Sağlık Asistanını" tasarlamaya başladık.*
+Ürettiğimiz JSON verisini bu kodla beraber yükleyerek "Sağlık Asistanını" tasarlamaya başladık.
     <br/>
     words = []
 labels = []
@@ -197,7 +197,7 @@ for intent in data['intents']:
         labels.append(intent['tag'])
 <br/>
 
- *Yukarıdaki bu kodlarla ise Chatbot'a yönlendirilen soruların( yani girilen verilerin) çıktısını aldık.*
+ Yukarıdaki bu kodlarla ise Chatbot'a yönlendirilen soruların( yani girilen verilerin) çıktısını aldık.
     <br/>
  words = [stemmer.stem(w.lower()) for w in words if w != "?"]
     words = sorted(list(set(words)))
@@ -205,7 +205,7 @@ for intent in data['intents']:
 
     labels = sorted(labels)
  <br/>
-   * Bu yukarıdaki kod ile Chatbot'un kelimelerin kökünü bulmasını sağladık.Böylece Chatbot'umuzun kelime köklerini kavrayarak kendine bir vocabulary sözlüğü oluşturmasını sağladık.*
+    Bu yukarıdaki kod ile Chatbot'un kelimelerin kökünü bulmasını sağladık.Böylece Chatbot'umuzun kelime köklerini kavrayarak kendine bir vocabulary sözlüğü oluşturmasını sağladık.
 
 <br/>
  training = []
@@ -225,7 +225,7 @@ for x, doc in enumerate(docs_x):
     output.append(output_row)
     
     <br/>
-  * Yukarıdaki JSON dosyası ile Chatbot'a bir kelime grubu vermiştik. Sonra da kelime köklerini tanımasını sağlamıştık. Şimdi bizim ona verdiğimiz ihtimalleri ve yazılanları karşılaştırarak bir cevap üretmesini ağlamamız gerekiyor. Onu da bu kod ile gerçekleştirdik.*
+  Yukarıdaki JSON dosyası ile Chatbot'a bir kelime grubu vermiştik. Sonra da kelime köklerini tanımasını sağlamıştık. Şimdi bizim ona verdiğimiz ihtimalleri ve yazılanları karşılaştırarak bir cevap üretmesini ağlamamız gerekiyor. Onu da bu kod ile gerçekleştirdik.
   <br/>
 training = numpy.array(training)
 output = numpy.array(output)
@@ -277,7 +277,7 @@ def chat():
         print(random.choice(responses))
 chat()
 <br/>
-*Bu son kodumuz ile beraber Sağlık Asistanımız içine attığımız sınıflar içinden tahminler yapabilecek hale geliyor ve artık hazır!*
+Bu son kodumuz ile beraber Sağlık Asistanımız içine attığımız sınıflar içinden tahminler yapabilecek hale geliyor ve artık hazır!
 <br/>
 
 
